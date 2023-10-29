@@ -9,8 +9,9 @@ class PrayerTimesApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
+
         self.setWindowTitle("Prayer Times")
-        self.setGeometry(100, 100, 400, 200)
+        self.setGeometry(100, 100, 800, 100)
 
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
