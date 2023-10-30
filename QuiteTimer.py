@@ -16,6 +16,9 @@ class PrayerTimesApp(QMainWindow):
         # Set the "always on top" window flag
         self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint)
 
+        # Set the background color to gold
+        self.setStyleSheet("background-color: #ffe066;")
+
 
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
@@ -33,6 +36,21 @@ class PrayerTimesApp(QMainWindow):
         self.init_page1()
         self.init_page2()
 
+        # This is handled in the loadcsv function for now
+        
+        # font = QFont("Helvetica", 16)
+        # font.setBold(True)
+        # self.message_label.setFont(font)
+        # self.message_label.setStyleSheet("color: white;")
+        # self.timer_label.setFont(font)
+        # self.timer_label.setStyleSheet("color: white;")
+
+        # Change the font color to white and make it bold
+        self.load_button.setFont(QFont("Helvetica", 14, QFont.Bold))  # Make the button text bold
+        self.load_button.setStyleSheet("background-color: #007acc; color: white;")
+
+
+
 
     def init_page1(self):
         layout = QVBoxLayout(self.page1)
@@ -45,6 +63,19 @@ class PrayerTimesApp(QMainWindow):
         self.font_size_combobox.addItem("20")
         self.font_size_combobox.addItem("24")
         self.font_size_combobox.addItem("28")
+        self.font_size_combobox.addItem("32")
+        self.font_size_combobox.addItem("36")
+        self.font_size_combobox.addItem("40")
+        self.font_size_combobox.addItem("44")
+        self.font_size_combobox.addItem("48")
+        self.font_size_combobox.addItem("52")
+        self.font_size_combobox.addItem("56")
+        self.font_size_combobox.addItem("60")
+        self.font_size_combobox.addItem("66")
+        self.font_size_combobox.addItem("72")
+        self.font_size_combobox.addItem("80")
+        self.font_size_combobox.addItem("88")
+        self.font_size_combobox.addItem("92")
         self.font_size_combobox.setCurrentIndex(1)  # Default font size
         font_size_layout.addWidget(self.font_size_label)
         font_size_layout.addWidget(self.font_size_combobox)
@@ -213,7 +244,9 @@ class PrayerTimesApp(QMainWindow):
             self.prayer_timer.start(1000)  # Check every second
 
             new_font = QFont("Helvetica", selected_font_size)
+            new_font.setBold(True)
             self.message_label.setFont(new_font)
+            self.timer_label.setFont(new_font)            
 
             self.stacked_widget.setCurrentWidget(self.page2)  # Switch to page 2
             self.check_prayer_time()
